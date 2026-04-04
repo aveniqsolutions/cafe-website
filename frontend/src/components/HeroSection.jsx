@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Coffee } from 'lucide-react';
 
 const HeroSection = ({ data, branding }) => {
   const [offsetY, setOffsetY] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -10,6 +11,7 @@ const HeroSection = ({ data, branding }) => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    setTimeout(() => setIsLoaded(true), 100);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -20,30 +22,37 @@ const HeroSection = ({ data, branding }) => {
         style={{ transform: `translateY(${offsetY * 0.5}px)` }}
       >
         <img src={data.image} alt="Café Interior" />
-        <div className="hero-overlay"></div>
+        <div className="hero-overlay-elegant"></div>
       </div>
 
-      <div className="hero-content">
-        <div className="hero-text animate-fade-in">
-          <h1 className="hero-headline">{data.headline}</h1>
-          <p className="hero-subheadline">{data.subheadline}</p>
-          <div className="hero-buttons">
-            <button className="btn-primary">Explore Menu</button>
-            <button className="btn-secondary">Our Story</button>
-          </div>
+      <div className={`hero-content-elegant ${isLoaded ? 'loaded' : ''}`}>
+        <div className="hero-badge">
+          <Coffee size={18} />
+          <span>Est. 2015</span>
         </div>
 
-        <div className="scroll-indicator">
-          <ArrowDown className="bounce-animation" />
-          <span>Scroll to explore</span>
+        <div className="hero-text-elegant">
+          <h1 className="hero-headline-elegant">
+            <span className="headline-line">{branding.name}</span>
+          </h1>
+          <div className="hero-divider"></div>
+          <p className="hero-tagline-elegant">{branding.tagline}</p>
+          <p className="hero-description-elegant">{data.subheadline}</p>
         </div>
-      </div>
 
-      {/* Floating Coffee Steam Animation */}
-      <div className="steam-container">
-        <div className="steam steam-1"></div>
-        <div className="steam steam-2"></div>
-        <div className="steam steam-3"></div>
+        <div className="hero-buttons-elegant">
+          <button className="btn-elegant-primary">
+            <span>Explore Menu</span>
+          </button>
+          <button className="btn-elegant-secondary">
+            <span>Make Reservation</span>
+          </button>
+        </div>
+
+        <div className="scroll-indicator-elegant">
+          <div className="scroll-line"></div>
+          <ArrowDown className="scroll-arrow" size={20} />
+        </div>
       </div>
     </section>
   );
