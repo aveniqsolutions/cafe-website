@@ -1,0 +1,19 @@
+.App {
+    min-height: 100vh;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+    background-color: #8B9B7E;
+    color: #FFFFFF;
+}
+
+::-moz-selection {
+    background-color: #8B9B7E;
+    color: #FFFFFF;
+}
