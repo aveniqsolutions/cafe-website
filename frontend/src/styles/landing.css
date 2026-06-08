@@ -1355,6 +1355,8 @@ section {
   color: var(--dark-brown);
   cursor: pointer;
   transition: background-color var(--transition-fast);
+  border: none;
+  font-size: 1rem;
 }
 
 .map-overlay:hover {
