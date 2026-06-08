@@ -522,6 +522,11 @@ section {
   gap: 12px;
   animation: fadeIn 1s ease-out 1.5s forwards;
   opacity: 0;
+   cursor: pointer;
+}
+
+.scroll-indicator-elegant:hover .scroll-arrow {
+  color: var(--cream);
 }
 
 .scroll-line {
