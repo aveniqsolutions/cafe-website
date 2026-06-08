@@ -21,10 +21,22 @@ const Navigation = ({ isScrolled, branding }) => {
     }
   };
 
+  const handleReserveClick = () => {
+    const element = document.querySelector('#contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setMobileMenuOpen(false);
+    }
+  };
+  
   return (
     <nav className={`navigation ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <div className="nav-logo">
+       <div 
+          className="nav-logo"
+          onClick={(e) => scrollToSection(e, '#hero')}
+          style={{ cursor: 'pointer' }}
+        >
           <Coffee className="logo-icon" />
           <span className="logo-text">{branding.name}</span>
         </div>
@@ -40,7 +52,12 @@ const Navigation = ({ isScrolled, branding }) => {
           ))}
         </ul>
 
-        <button className="reserve-btn desktop-reserve">Reserve a Table</button>
+       <button 
+          className="reserve-btn desktop-reserve"
+          onClick={handleReserveClick}
+        >
+          Reserve a Table
+        </button>
 
         {/* Mobile Menu Toggle */}
         <button 
@@ -63,7 +80,12 @@ const Navigation = ({ isScrolled, branding }) => {
               </li>
             ))}
             <li>
-              <button className="reserve-btn mobile-reserve">Reserve a Table</button>
+              <button 
+                className="reserve-btn mobile-reserve"
+                onClick={handleReserveClick}
+              >
+                Reserve a Table
+              </button>
             </li>
           </ul>
         </div>
