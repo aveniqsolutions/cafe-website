@@ -927,6 +927,97 @@ section {
   font-weight: 600;
 }
 
+/* Menu Item Modal */
+.item-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: var(--spacing-lg);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.item-modal-content {
+  background-color: var(--white);
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.item-modal-content img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background-color: var(--white);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background-color: var(--sage);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+.modal-details {
+  padding: var(--spacing-xl);
+}
+
+.modal-details h2 {
+  font-size: 2rem;
+  color: var(--dark-brown);
+  margin-bottom: var(--spacing-sm);
+}
+
+.modal-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+  margin-bottom: var(--spacing-md);
+}
+
+.modal-description {
+  color: var(--dark-gray);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+}
+
+.modal-category {
+  display: inline-block;
+  background-color: var(--sage);
+  color: var(--white);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
 /* ===================================
    Specialties Section
    =================================== */
