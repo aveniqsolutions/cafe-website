@@ -49,20 +49,21 @@ const HeroSection = ({ data, branding }) => {
 
         <div className="hero-buttons-elegant">
           <button 
-            className=\"btn-elegant-primary\"
+            className="btn-elegant-primary"
             onClick={() => scrollToSection('#menu')}
           >
             <span>Explore Menu</span>
           </button>
           <button 
-            className=\"btn-elegant-secondary\"
+            className="btn-elegant-secondary"
             onClick={() => scrollToSection('#contact')}
           >
             <span>Make Reservation</span>
           </button>
         </div>
 
-        <div className=\"scroll-indicator-elegant\" onClick={() => scrollToSection('#about')}>
+        <div className="scroll-indicator-elegant"
+          onClick={() => scrollToSection('#about')}>
           <div className="scroll-line"></div>
           <ArrowDown className="scroll-arrow" size={20} />
         </div>
