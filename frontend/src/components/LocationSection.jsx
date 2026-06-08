@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-react';
 
 const LocationSection = ({ data }) => {
@@ -66,7 +65,6 @@ const LocationSection = ({ data }) => {
               <ExternalLink size={16} />
             </button>
             </div>
-          </div>
 
           {/* Contact Information */}
           <div className={`contact-info ${isVisible ? 'fade-in-up' : ''}`}>
