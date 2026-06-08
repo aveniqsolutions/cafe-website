@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { toast } from 'sonner';
 
 const SpecialtiesSection = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,6 +40,12 @@ const SpecialtiesSection = ({ data }) => {
     setCurrentIndex(index);
   };
 
+  const handleTryThis = (specialtyName) => {
+    toast.success(`${specialtyName} - Great choice! Scroll down to make a reservation.`, {
+      duration: 3000
+    });
+  };
+  
   return (
     <section id="specialties" className="specialties-section" ref={sectionRef}>
       <div className="section-container">
@@ -73,7 +80,12 @@ const SpecialtiesSection = ({ data }) => {
                   <div className="specialty-info">
                     <h3 className="specialty-name">{specialty.name}</h3>
                     <p className="specialty-description">{specialty.description}</p>
-                    <button className="try-btn">Try This</button>
+                   <button 
+                      className="try-btn"
+                      onClick={() => handleTryThis(specialty.name)}
+                    >
+                      Try This
+                    </button>
                   </div>
                 </div>
               </div>
