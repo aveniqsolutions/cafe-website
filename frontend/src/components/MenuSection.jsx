@@ -97,15 +97,15 @@ const MenuSection = ({ data }) => {
       
       {/* Modal for item details */}
       {selectedItem && (
-        <div className=\"item-modal\" onClick={closeModal}>
-          <div className=\"item-modal-content\" onClick={(e) => e.stopPropagation()}>
-            <button className=\"modal-close\" onClick={closeModal}>×</button>
+        <div className="item-modal" onClick={closeModal}>
+          <div className="item-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>×</button>
             <img src={selectedItem.image} alt={selectedItem.name} />
-            <div className=\"modal-details\">
+            <div className="modal-details">
               <h2>{selectedItem.name}</h2>
-              <p className=\"modal-price\">{selectedItem.price}</p>
-              <p className=\"modal-description\">{selectedItem.description}</p>
-              <span className=\"modal-category\">{selectedItem.category}</span>
+              <p className="modal-price">{selectedItem.price}</p>
+              <p className="modal-description">{selectedItem.description}</p>
+              <span className="modal-category">{selectedItem.category}</span>
             </div>
           </div>
         </div>
