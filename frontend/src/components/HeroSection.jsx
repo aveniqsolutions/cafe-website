@@ -15,6 +15,13 @@ const HeroSection = ({ data, branding }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+   const scrollToSection = (sectionId) => {
+    const element = document.querySelector(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   return (
     <section id="hero" className="hero-section">
       <div 
@@ -41,15 +48,21 @@ const HeroSection = ({ data, branding }) => {
         </div>
 
         <div className="hero-buttons-elegant">
-          <button className="btn-elegant-primary">
+          <button 
+            className=\"btn-elegant-primary\"
+            onClick={() => scrollToSection('#menu')}
+          >
             <span>Explore Menu</span>
           </button>
-          <button className="btn-elegant-secondary">
+          <button 
+            className=\"btn-elegant-secondary\"
+            onClick={() => scrollToSection('#contact')}
+          >
             <span>Make Reservation</span>
           </button>
         </div>
 
-        <div className="scroll-indicator-elegant">
+        <div className=\"scroll-indicator-elegant\" onClick={() => scrollToSection('#about')}>
           <div className="scroll-line"></div>
           <ArrowDown className="scroll-arrow" size={20} />
         </div>
