@@ -68,7 +68,7 @@ const LocationSection = ({ data }) => {
 
           {/* Contact Information */}
           <div className={`contact-info ${isVisible ? 'fade-in-up' : ''}`}>
-           <div className=\"info-card\" onClick={openInMaps} style={{ cursor: 'pointer' }}>
+           <div className="info-card" onClick={openInMaps} style={{ cursor: 'pointer' }}>
               <div className="info-icon">
                 <MapPin size={24} />
               </div>
