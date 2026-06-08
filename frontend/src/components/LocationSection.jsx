@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-react';
 
 const LocationSection = ({ data }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,6 +27,19 @@ const LocationSection = ({ data }) => {
     };
   }, []);
 
+  const openInMaps = () => {
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${data.coordinates.lat},${data.coordinates.lng}`;
+    window.open(mapsUrl, '_blank');
+  };
+
+  const handleCall = () => {
+    window.location.href = `tel:${data.phone}`;
+  };
+
+  const handleEmail = () => {
+    window.location.href = `mailto:${data.email}`;
+  };
+
   return (
     <section id="location" className="location-section" ref={sectionRef}>
       <div className="section-container">
@@ -46,15 +60,17 @@ const LocationSection = ({ data }) => {
               src={`https://www.openstreetmap.org/export/embed.html?bbox=-122.68840789794923%2C45.50520%2C-122.66839599609376%2C45.52520&layer=mapnik&marker=${data.coordinates.lat}%2C${data.coordinates.lng}`}
               allowFullScreen
             ></iframe>
-            <div className="map-overlay">
+            <button className="map-overlay" onClick={openInMaps}>
               <MapPin size={24} />
-              <span>View in Maps</span>
+              <span>Open in Maps</span>
+              <ExternalLink size={16} />
+            </button>
             </div>
           </div>
 
           {/* Contact Information */}
           <div className={`contact-info ${isVisible ? 'fade-in-up' : ''}`}>
-            <div className="info-card">
+           <div className=\"info-card\" onClick={openInMaps} style={{ cursor: 'pointer' }}>
               <div className="info-icon">
                 <MapPin size={24} />
               </div>
@@ -65,7 +81,7 @@ const LocationSection = ({ data }) => {
               </div>
             </div>
 
-            <div className="info-card">
+            <div className="info-card" onClick={handleCall} style={{ cursor: 'pointer' }}>
               <div className="info-icon">
                 <Phone size={24} />
               </div>
