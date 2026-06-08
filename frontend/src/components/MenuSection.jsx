@@ -4,6 +4,7 @@ import { Filter } from 'lucide-react';
 const MenuSection = ({ data }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -31,6 +32,14 @@ const MenuSection = ({ data }) => {
     ? data.items 
     : data.items.filter(item => item.category === selectedCategory);
 
+  const handleViewDetails = (item) => {
+    setSelectedItem(item);
+  };
+
+  const closeModal = () => {
+    setSelectedItem(null);
+  };
+  
   return (
     <section id="menu" className="menu-section" ref={sectionRef}>
       <div className="section-container">
@@ -65,7 +74,12 @@ const MenuSection = ({ data }) => {
               <div className="menu-item-image">
                 <img src={item.image} alt={item.name} />
                 <div className="menu-item-overlay">
-                  <button className="quick-view-btn">View Details</button>
+                 <button 
+                    className="quick-view-btn"
+                    onClick={() => handleViewDetails(item)}
+                  >
+                    View Details
+                  </button>
                 </div>
               </div>
               <div className="menu-item-content">
@@ -80,6 +94,22 @@ const MenuSection = ({ data }) => {
           ))}
         </div>
       </div>
+      
+      {/* Modal for item details */}
+      {selectedItem && (
+        <div className=\"item-modal\" onClick={closeModal}>
+          <div className=\"item-modal-content\" onClick={(e) => e.stopPropagation()}>
+            <button className=\"modal-close\" onClick={closeModal}>×</button>
+            <img src={selectedItem.image} alt={selectedItem.name} />
+            <div className=\"modal-details\">
+              <h2>{selectedItem.name}</h2>
+              <p className=\"modal-price\">{selectedItem.price}</p>
+              <p className=\"modal-description\">{selectedItem.description}</p>
+              <span className=\"modal-category\">{selectedItem.category}</span>
+            </div>
+          </div>
+        </div>
+      )}    
     </section>
   );
 };
